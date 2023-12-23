@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gj-cloud-base" />
         <module name="gj-cloud-security" />
         <module name="gj-cloud-gateway" />
+        <module name="gj-cloud-common" />
+        <module name="gj-cloud-base" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="gj-cloud-base" options="-parameters" />
+      <module name="gj-cloud-common" options="-parameters" />
       <module name="gj-cloud-gateway" options="-parameters" />
       <module name="gj-cloud-security" options="-parameters" />
     </option>

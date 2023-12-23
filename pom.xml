@@ -25,6 +25,7 @@
 
     <properties>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <spring-cloud-gateway.version>4.1.0</spring-cloud-gateway.version>
         <java.version>17</java.version>
         <spring-boot.version>3.0.13</spring-boot.version>
         <mysql.version>8.2.0</mysql.version>
@@ -136,6 +137,20 @@
                 <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>3.1.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-gateway-dependencies</artifactId>
+                <version>${spring-cloud-gateway.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-gateway.version}</version>
+            </dependency>
+
 <!--            <dependency>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
 <!--                <artifactId>spring-boot-starter-web</artifactId>-->

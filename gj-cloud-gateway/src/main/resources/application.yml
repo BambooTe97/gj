@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active:  ${SPRING_PROFILES_ACTIVE:dev, mysql}
+    active: ${SPRING_PROFILES_ACTIVE:dev, mysql}
 
   cloud:
     nacos:
@@ -11,19 +11,18 @@ spring:
         server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:localhost:8848} # Nacos 服务器地址
         namespace: dev
         group: CLOUD_DEV_GROUP
-
+    gateway:
+      routes:
+        - id: base_route # 路由 id,需要唯一
+          uri: lb://base # 路由的目标地址 lb：负载均衡。双斜线后面的是服务名
+#          uri: https://example.org # 路由的目标地址（固定地址）
+          predicates: # 路由断言，判断请求是否符合路由规则的条件
+            - Path=/base/**
+        - id: security-route
+          uri: lb://security
+          predicates:
+            - Path=/security/**
+#            - Cookie=mycookie,mycookievalue
+#            -
   application:
     name: gateway
-  datasource:
-    # Mysql
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: sUnwAY@b6#1e2$
-    url: jdbc:mysql://192.168.113.18:3306/bt?characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Shanghai
-    hikari:
-      connection-timeout: 10000
-      idle-timeout: 300000
-      max-lifetime: 600000
-      minimum-idle: 5
-      maximum-pool-size: 10
-

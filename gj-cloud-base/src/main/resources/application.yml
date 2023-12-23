@@ -1,0 +1,29 @@
+server:
+  port: 8999
+
+spring:
+  profiles:
+    active:  ${SPRING_PROFILES_ACTIVE:dev, mysql}
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_DISCOVERY_SERVER_ADDR:localhost:8848} # Nacos 服务器地址
+        namespace: dev
+        group: CLOUD_DEV_GROUP
+
+  application:
+    name: base
+  datasource:
+    # Mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: sUnwAY@b6#1e2$
+    url: jdbc:mysql://192.168.113.18:3306/bt?characterEncoding=utf8&useUnicode=true&serverTimezone=Asia/Shanghai
+    hikari:
+      connection-timeout: 10000
+      idle-timeout: 300000
+      max-lifetime: 600000
+      minimum-idle: 5
+      maximum-pool-size: 10
+
